@@ -33,8 +33,10 @@ Route::middleware([
     Route::get('invitar/{diagramador}',[DiagramadorController::class, 'invitar'])->name('invitar');
     Route::Post('registrarInvitado',[DiagramadorController::class, 'registrarInvitado'])->name('registrarInvitado');
 
-    
+
     Route::get('exportarCodigoZip',[DiagramadorController::class, 'exportarCodigoZip'])->name('exportarCodigoZip');
 
     Route::get('exportarCase',[DiagramadorController::class, 'exportarCase'])->name('exportarCase');
+
+    Route::get('exportarJson',[DiagramadorController::class, 'exportarJson'])->name('exportarJson');
 });

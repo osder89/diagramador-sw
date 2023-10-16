@@ -207,4 +207,21 @@ class DiagramadorController extends Controller
 
         return new Response($htmlContent, 200, $headers);
     }
+
+    public function exportarJson()
+    {
+        //exportacion del diagramador a xml compatible con Enterprice Architech
+        // $view = view('Exportar.architec', ['array_clase' => $array_clase, 'di' => $di]);
+        $view = view('Exportar.architec');
+
+        $fecha = date('Y-m-d');
+        $htmlContent = $view->render();
+
+        $headers = [
+            'Content-type'        => 'text/html; charset=UTF-8',
+            'Content-Disposition' => 'attachment; filename="Mydiagram-' . $fecha . '.xml"',
+        ];
+
+        return new Response($htmlContent, 200, $headers);
+    }
 }

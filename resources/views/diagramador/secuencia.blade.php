@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     @vite(['resources/js/diagramador.js'])
     <main>
@@ -7,8 +6,8 @@
 
             <div class="flex justify-between">
                 <div class="flex space-x-4">
-                    <button id="bt_new_nodo" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        Agregar Artefacto
+                    <button id="bt_new_nodo" href="load()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Cargar Elementos desde 0
                     </button>
 
 
@@ -21,6 +20,10 @@
                         class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
                         Exportar Case
                     </a>
+                    <a href="{{ route('exportarJson') }}"
+                    class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
+                        Exportar Json
+                </a>
                 </div>
 
                 <div class="flex items-center text-gray-500 text-sm">
