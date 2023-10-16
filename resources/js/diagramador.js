@@ -433,15 +433,10 @@ var datos = {
     "class": "go.GraphLinksModel",
     "nodeDataArray": [
         { "key": "Actor", "text": "Actor: Patron", "isGroup": true, "loc": "0 0", "duration": 9 },
-        { "key": "Controller", "text": "Controller", "isGroup": true, "loc": "150 0", "duration": 9 },
-        { "key": "View", "text": "View", "isGroup": true, "loc": "250 0", "duration": 9 },
-        { "key": "Model", "text": "Model", "isGroup": true, "loc": "350 0", "duration": 9 },
-        { "group": "Controller", "start": 1, "duration": 2 },
-        { "group": "View", "start": 2, "duration": 3 },
+        
+        
         { "group": "Actor", "start": 3, "duration": 1 },
-        { "group": "Controller", "start": 5, "duration": 1 },
-        { "group": "Actor", "start": 6, "duration": 2 },
-        { "group": "Model", "start": 8, "duration": 1 }
+        
     ],
     "linkDataArray": [
         { "from": "Actor", "to": "Controller", "text": "order", "time": 1 },
