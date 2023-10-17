@@ -460,16 +460,44 @@ function save() {
     datos = miDiagrama.model.toJson();
     miDiagrama.isModified = false;
 }
+
 function load() {
     console.log('le di cargar en load ');
     miDiagrama.model = go.Model.fromJson(datos);
 }
 
-// let btnCargar = document.getElementById('btnCargar');
-// btnCargar.addEventListener('click', function () {
-//     console.log('le di cargar');
-//     load();
-// });
+/*const addNode = (position) => {
+    // Genera un nuevo nodo con una clave única
+    const newNode = {
+      key: "newNode" + Date.now(), // Puedes utilizar una lógica diferente para generar claves únicas
+      text: "New Node",
+      isGroup: true,
+      loc: "400 0", // Ubicado en la posición del doble clic
+      duration: 3, // Ajusta la duración según tus necesidades
+    };
+}*/
+
+const addNode = (position) => {
+    // Genera un nuevo nodo con una clave única
+    const newNode = {
+      key: "newNode" + Date.now(), // Puedes utilizar una lógica diferente para generar claves únicas
+      text: "New Node",
+      isGroup: true,
+      loc: position, // Ubicado en la posición del doble clic
+      duration: 3, // Ajusta la duración según tus necesidades
+    };
+
+    datos.nodeDataArray.push(newNode);
+
+    console.log(datos);
+}
+addNode("400 0");  //);
+
+
+let btnCargar = document.getElementById('btnCargar');
+ btnCargar.addEventListener('click', function () {
+    addNode("400 0 ");
+ });
 
 
 // let btnGuardar = document.getElementById('btnGuardar');
@@ -540,4 +568,7 @@ bt_new_nodo.addEventListener('click', function () {
 
     // Luego, puedes forzar la actualización de la vista del diagrama para mostrar el nuevo nodo
     miDiagrama.requestUpdate(); // Refresca la vista del diagra
+
+
 });
+

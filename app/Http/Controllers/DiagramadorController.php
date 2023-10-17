@@ -8,6 +8,8 @@ use App\Models\diagramador;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 
 class DiagramadorController extends Controller
 {
@@ -223,5 +225,42 @@ class DiagramadorController extends Controller
         ];
 
         return new Response($htmlContent, 200, $headers);
-    }
+   }
+
+   public function exportarJson2(Request $request){
+
+        try{
+            $xmlData = $request->input('xmldata');
+            $apikey= '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';
+            $apiurl = 'https://api.openai.com/v1/chat/completions';
+            $respuesta = Http::post($apiurl, [
+                'model' => 'text-davinci-002', // Puedes cambiar el modelo según tus necesidades
+                'messages' => [
+                    ['role' => 'system', 'content' => 'You are a helpful assistant.'],
+                    ['role' => 'user', 'content' => $xmlData],
+                ],
+            ], [
+                'Content-Type' => 'application/json',
+                'Authorization' => 'Bearer ' . $apikey,
+            ]);
+            if (!$respuesta->successful()) {
+                throw new \Exception('Error al realizar la solicitud a la API de ChatGPT');
+            }
+            $resultado = $respuesta->json();
+            // Aquí puedes procesar el resultado según tus necesidades
+            $jsonContent = json_encode(['jsonTraducido' => $resultado['choices'][0]['message']['content']], JSON_PRETTY_PRINT);
+            // Almacenar el archivo en el sistema de archivos de Laravel
+            $fileName = 'traduccion_' . time() . '.json';
+            Storage::put($fileName, $jsonContent);
+
+            // Devolver la respuesta con el enlace de descarga
+            $downloadLink = route('descargarJson', ['fileName' => $fileName]);
+
+            return response()->json(['downloadLink' => $downloadLink]);
+
+            }catch (\Exception $ex) {
+                // Maneja errores
+                return response()->json(['error' => 'Error interno del servidor'], 500);
+            }
+   }
 }

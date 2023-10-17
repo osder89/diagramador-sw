@@ -246,7 +246,7 @@
             toolName="Enterprise Architect 2.5">
             <UML:ModelElement.taggedValue>
                 <UML:TaggedValue tag="version" value="1.0" />
-                <UML:TaggedValue tag="author" value="JSuarez" />
+                <UML:TaggedValue tag="author" value="jorgito" />
                 <UML:TaggedValue tag="created_date" value="2023-10-08 01:18:56" />
                 <UML:TaggedValue tag="modified_date" value="2023-10-08 01:18:56" />
                 <UML:TaggedValue tag="package" value="EAPK_5F2366CC_BC94_40f2_B04F_082BDBE2B630" />

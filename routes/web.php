@@ -39,4 +39,5 @@ Route::middleware([
     Route::get('exportarCase',[DiagramadorController::class, 'exportarCase'])->name('exportarCase');
 
     Route::get('exportarJson',[DiagramadorController::class, 'exportarJson'])->name('exportarJson');
+    Route::post('exportarJson2',[DiagramadorController::class, 'exportarJson2'])->name('exportarJson2');
 });
