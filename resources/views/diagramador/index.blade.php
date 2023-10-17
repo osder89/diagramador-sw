@@ -1,7 +1,66 @@
-@extends('layouts.app') <!-- Asegúrate de que estés utilizando la plantilla de Laravel que deseas -->
+@php
+    $imageUrl = asset('imagen/perfiljorge.jpg');
+@endphp
+@extends('layouts.app') 
 
 @section('content')
 @vite(['resources/js/diagramador.js'])
+<!-- empieza aca la parte de jorge -->
+<x-app-layout>
+    <x-slot name="header">
+        <div class="container mx-auto py-10 text-center">
+            <div class="flex flex-wrap items-center justify-center">
+                <div class="w-full md:w-1/2 order-2 md:order-1">
+                    <h1 class="text-3xl font-semibold mb-4">Diagrama de Secuencia</h1>
+                    <p class="text-lg text-gray-700">Aqui pones</p>
+                    <p class="text-lg text-gray-700 mt-4">Lo que tu cora te dicte</p>
+                    
+            </div>
+            <div class="w-full md:w-1/2 order-1 md:order-2">
+            <div class="flex flex-col justify-center items-center h-[100vh]">
+            <div class="relative flex flex-col items-center rounded-[10px] border-[1px] border-gray-200 w-[400px] mx-auto p-4 bg-white bg-clip-border shadow-md shadow-[#F3F3F3] dark:border-[#ffffff33] dark:!bg-navy-800 dark:text-white dark:shadow-none">
+                <div class="relative flex h-32 w-full justify-center rounded-xl bg-cover" >
+                    <img src='https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/media/banner.ef572d78f29b0fee0a09.png' class="absolute flex h-32 w-full justify-center rounded-xl bg-cover"> 
+                    <div class="absolute -bottom-12 flex h-[87px] w-[87px] items-center justify-center rounded-full border-[4px] border-white bg-pink-400 dark:!border-navy-700">
+                        <img src="{{ $imageUrl }}" alt="" />
+                    </div>
+                </div> 
+                <div class="mt-16 flex flex-col items-center">
+                    <h4 class="text-xl font-bold text-navy-700 dark:text-white">
+                    Jorge Eduardo Cari Araca
+                    </h4>
+                    <p class="text-base font-normal text-gray-600">Desarrollador</p>
+                </div> 
+                <div class="mt-6 mb-3 flex gap-14 md:!gap-14">
+                    <div class="flex flex-col items-center justify-center">
+                    <p class="text-sm font-bold text-navy-700 dark:text-white">Laravel</p>
+                    <p class="text-sm font-normal text-gray-600">FronEnd</p>
+                    </div>
+                    <div class="flex flex-col items-center justify-center">
+                    <p class="text-sm font-bold text-navy-700 dark:text-white">
+                        PHP y JavaScript
+                    </p>
+                    <p class="text-sm font-normal text-gray-600">BackEnd</p>
+                    </div>
+                    <div class="flex flex-col items-center justify-center">
+                    <p class="text-sm font-bold text-navy-700 dark:text-white">
+                        Diagramador
+                    </p>
+                    <p class="text-sm font-normal text-gray-600">GoJS</p>
+                    </div>
+                </div>
+            </div>  
+           
+        </div>
+                </div>
+            </div> 
+        </div>
+    </x-slot>
+ 
+</x-app-layout>
+
+<!-- termina aca la parte de jorge -->
+
     @if (session('success'))
         <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
             <strong class="font-bold">¡Éxito!</strong>
@@ -53,11 +112,11 @@
                             <td class="border border-gray-300 px-4 py-2 text-center">
                                 <div class="flex items-center justify-center">
                                     <a href="{{ route('diagramador.edit', $diagrama['id_diagrama']) }}"
-                                        class="text-blue-500 hover:text-blue-700 mr-2">Editar</a>
+                                        class="text-black hover:text-blue-700 mr-2">Editar</a>
                                     <a href="{{ route('invitar', $diagrama['id_diagrama']) }}"
-                                        class="text-black hover:text-blue-700 mr-2">Invitar</a>
+                                        class="text-black hover:text-blue-700 mr-2">Compartir</a>
                                     <a href="{{ route('diagramador.show', $diagrama['id_diagrama']) }}"
-                                        class="text-green-500 hover:text-green-700 mr-2">Trabajar</a>
+                                        class="text-black hover:text-green-700 mr-2">Trabajar</a>
                                     <form action="{{ route('diagramador.destroy', $diagrama['id_diagrama']) }}"
                                         method="POST" class="inline">
                                         @csrf
@@ -97,7 +156,7 @@
                             <td class="border border-gray-300 px-4 py-2 text-center">
                                 <div class="flex items-center justify-center">
                                     <a href="{{ route('diagramador.show', $diagrama['id']) }}"
-                                        class="text-green-500 hover:text-green-700 mr-2">Trabajar</a>
+                                        class="text-black hover:text-green-700 mr-2">Trabajar</a>
                                     <form action="#" method="POST"
                                         class="inline">
                                         @csrf
